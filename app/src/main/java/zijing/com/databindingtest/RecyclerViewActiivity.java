@@ -1,5 +1,6 @@
 package zijing.com.databindingtest;
 
+import android.databinding.BaseObservable;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,15 +13,17 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import zijing.com.databindingtest.databinding.ActivityListviewBinding;
+import zijing.com.databindingtest.databinding.ActivityRecyclerviewBinding;
 import zijing.com.databindingtest.databinding.LayoutFooterBinding;
 
 /**
  * Created by zijing on 16/7/18.
+ *
  */
-public class ListViewActiivity extends AppCompatActivity {
+public class RecyclerViewActiivity extends AppCompatActivity {
 
-    ArrayList<BindingStuff.User> listData = new ArrayList<>();
+    ArrayList<UserModel> listData = new ArrayList<>();
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,13 +31,13 @@ public class ListViewActiivity extends AppCompatActivity {
 
         int start = (int) (Math.random() * 15);
         for (int i=0; i<15; ++i) {
-            listData.add(new BindingStuff.User("" + (i+start), "" + (i+start)));
+            listData.add(new UserModel("" + (i+start), "" + (i+start)));
         }
 
-        ActivityListviewBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_listview);
+        ActivityRecyclerviewBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_recyclerview);
         binding.setHandler(this);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new MyAdapter(listData));
     }
@@ -55,9 +58,9 @@ public class ListViewActiivity extends AppCompatActivity {
 
     public static class MyAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
-        private ArrayList<BindingStuff.User> userList;
+        private ArrayList<UserModel> userList;
 
-        public MyAdapter(ArrayList<BindingStuff.User> _userList) {
+        public MyAdapter(ArrayList<UserModel> _userList) {
             userList = _userList;
         }
 
@@ -68,8 +71,13 @@ public class ListViewActiivity extends AppCompatActivity {
         }
 
         @Override
+        public int getItemViewType(int position) {
+            return super.getItemViewType(position);
+        }
+
+        @Override
         public void onBindViewHolder(BindingViewHolder holder, int position) {
-            final BindingStuff.User user = userList.get(position);
+            final UserModel user = userList.get(position);
             holder.getBinding().setUser(user);
             holder.getBinding().executePendingBindings();
         }
@@ -80,7 +88,36 @@ public class ListViewActiivity extends AppCompatActivity {
         }
     }
 
+    public static class UserModel extends BaseObservable {
+        private String lastName;
+        private String firstName;
+
+        public UserModel(String fn, String ln) {
+            firstName = fn;
+            lastName = ln;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+            notifyPropertyChanged(zijing.com.databindingtest.BR.user);
+        }
+
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+            notifyPropertyChanged(zijing.com.databindingtest.BR.user);
+        }
+    }
+
     public void changeFistColumnData(View view) {
-        listData.get(0).firstName.set("c " + (int) (Math.random() * 10));
+        listData.get(0).setFirstName("c " + (int) (Math.random() * 10));
     }
 }

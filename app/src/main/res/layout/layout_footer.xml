@@ -2,10 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
-            name="user"
-            type="zijing.com.databindingtest.BindingStuff.User" />
+            name="user" type="zijing.com.databindingtest.RecyclerViewActiivity.UserModel" />
     </data>
 
 
