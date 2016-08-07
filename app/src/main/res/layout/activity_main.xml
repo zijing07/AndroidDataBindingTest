@@ -18,13 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RecyclerView Activity"
-            android:onClick="@{presenter.gotoRecyclerViewAcitivity}" />
+            android:onClick="@{presenter::gotoListViewActivity}" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SeekBar Acvitity"
-            android:onClick="@{presenter.gotoSeekBarActivity}"/>
+            android:onClick="@{presenter::gotoSeekBarActivity}"/>
 
     </LinearLayout>
 </layout>

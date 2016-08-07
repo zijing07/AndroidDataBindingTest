@@ -1,6 +1,7 @@
 package zijing.com.databindingtest;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,13 +17,14 @@ public class SeekBarActivity extends AppCompatActivity {
     public class SeekBarModel extends BaseObservable {
         private int progress;
 
+        @Bindable
         public int getProgress() {
             return progress;
         }
 
         public void setProgress(int progress) {
             this.progress = progress;
-            notifyPropertyChanged(zijing.com.databindingtest.BR.seekBarModel);
+            notifyPropertyChanged(zijing.com.databindingtest.BR.progress);
         }
     }
 

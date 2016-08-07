@@ -24,6 +24,7 @@ public class RecyclerViewActiivity extends AppCompatActivity {
 
     ArrayList<UserModel> listData = new ArrayList<>();
     RecyclerView recyclerView;
+    MyAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,8 +39,9 @@ public class RecyclerViewActiivity extends AppCompatActivity {
         binding.setHandler(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        adapter = new MyAdapter(listData);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapter(listData));
+        recyclerView.setAdapter(adapter);
     }
 
     public static class BindingViewHolder extends RecyclerView.ViewHolder {
@@ -119,5 +121,6 @@ public class RecyclerViewActiivity extends AppCompatActivity {
 
     public void changeFistColumnData(View view) {
         listData.get(0).setFirstName("c " + (int) (Math.random() * 10));
+        adapter.notifyDataSetChanged();
     }
 }
