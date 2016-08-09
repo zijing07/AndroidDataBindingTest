@@ -1,4 +1,4 @@
-package zijing.com.databindingtest;
+package zijing.com.databindingtest.newway;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import zijing.com.databindingtest.R;
 import zijing.com.databindingtest.databinding.ActivitySeekbarBinding;
 
 /**

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="presenter" type="zijing.com.databindingtest.newway.MainActivity.Presenter" />
+        <variable name="presenter" type="zijing.com.databindingtest.LaunchActivity.Presenter" />
     </data>
 
     <LinearLayout
@@ -17,20 +17,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Display Model"
-            android:onClick="@{presenter::gotoDisplayModelActivity}" />
+            android:text="Old Way Activity"
+            android:onClick="@{presenter::gotoOldMainActivity}" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RecyclerView Activity"
-            android:onClick="@{presenter::gotoListViewActivity}" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SeekBar Acvitity"
-            android:onClick="@{presenter::gotoSeekBarActivity}"/>
+            android:text="New Way Activity"
+            android:onClick="@{presenter::gotoNewMainActivity}"/>
 
     </LinearLayout>
 </layout>

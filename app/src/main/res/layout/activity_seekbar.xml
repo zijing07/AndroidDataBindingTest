@@ -5,7 +5,7 @@
     <data>
         <variable
             name="seekBarModel"
-            type="zijing.com.databindingtest.SeekBarActivity.SeekBarModel" />
+            type="zijing.com.databindingtest.newway.SeekBarActivity.SeekBarModel" />
     </data>
 
     <LinearLayout

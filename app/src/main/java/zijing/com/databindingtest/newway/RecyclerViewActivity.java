@@ -1,6 +1,7 @@
-package zijing.com.databindingtest;
+package zijing.com.databindingtest.newway;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import zijing.com.databindingtest.BR;
+import zijing.com.databindingtest.R;
 import zijing.com.databindingtest.databinding.ActivityRecyclerviewBinding;
 import zijing.com.databindingtest.databinding.LayoutFooterBinding;
 
@@ -20,7 +23,7 @@ import zijing.com.databindingtest.databinding.LayoutFooterBinding;
  * Created by zijing on 16/7/18.
  *
  */
-public class RecyclerViewActiivity extends AppCompatActivity {
+public class RecyclerViewActivity extends AppCompatActivity {
 
     ArrayList<UserModel> listData = new ArrayList<>();
     RecyclerView recyclerView;
@@ -91,7 +94,9 @@ public class RecyclerViewActiivity extends AppCompatActivity {
     }
 
     public static class UserModel extends BaseObservable {
+        @Bindable
         private String lastName;
+        @Bindable
         private String firstName;
 
         public UserModel(String fn, String ln) {
@@ -105,7 +110,7 @@ public class RecyclerViewActiivity extends AppCompatActivity {
 
         public void setLastName(String lastName) {
             this.lastName = lastName;
-            notifyPropertyChanged(zijing.com.databindingtest.BR.user);
+            notifyPropertyChanged(BR.lastName);
         }
 
 
@@ -115,7 +120,7 @@ public class RecyclerViewActiivity extends AppCompatActivity {
 
         public void setFirstName(String firstName) {
             this.firstName = firstName;
-            notifyPropertyChanged(zijing.com.databindingtest.BR.user);
+            notifyPropertyChanged(BR.firstName);
         }
     }
 

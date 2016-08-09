@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="user" type="zijing.com.databindingtest.RecyclerViewActiivity.UserModel" />
+            name="user" type="zijing.com.databindingtest.newway.RecyclerViewActivity.UserModel" />
     </data>
 
 
