@@ -18,19 +18,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Display Model"
+            android:tag="sdkfj"
             android:onClick="@{presenter::gotoDisplayModelActivity}" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RecyclerView Activity"
-            android:onClick="@{presenter::gotoListViewActivity}" />
+            android:onClick="@{presenter::gotoListViewActivity}"
+            android:tag="binding_2" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SeekBar Acvitity"
             android:onClick="@{presenter::gotoSeekBarActivity}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login Acvitity"
+            android:onClick="@{presenter::gotoLoginActivity}"/>
 
     </LinearLayout>
 </layout>

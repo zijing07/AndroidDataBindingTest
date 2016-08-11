@@ -20,6 +20,7 @@
         <activity android:name=".newway.RecyclerViewActivity"></activity>
         <activity android:name=".newway.SeekBarActivity"></activity>
         <activity android:name=".newway.DisplayModelActivity"></activity>
+        <activity android:name=".newway.LoginActivity"></activity>
 
         <activity android:name=".oldway.OldMainActivity"></activity>
         <activity android:name=".oldway.OldSeekBarActivity"></activity>

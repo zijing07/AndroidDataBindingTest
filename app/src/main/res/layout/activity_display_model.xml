@@ -3,6 +3,7 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable name="user" type="zijing.com.databindingtest.newway.RecyclerViewActivity.UserModel" />
     </data>
 

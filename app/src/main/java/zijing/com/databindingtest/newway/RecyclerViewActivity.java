@@ -94,16 +94,17 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     public static class UserModel extends BaseObservable {
-        @Bindable
+
         private String lastName;
-        @Bindable
         private String firstName;
+        public boolean isFired;
 
         public UserModel(String fn, String ln) {
             firstName = fn;
             lastName = ln;
         }
 
+        @Bindable
         public String getLastName() {
             return lastName;
         }
@@ -113,7 +114,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
             notifyPropertyChanged(BR.lastName);
         }
 
-
+        @Bindable
         public String getFirstName() {
             return firstName;
         }

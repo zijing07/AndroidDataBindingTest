@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         public void gotoSeekBarActivity(View view) {
             startActivity(new Intent(MainActivity.this, SeekBarActivity.class));
         }
+        public void gotoLoginActivity(View view) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
     }
 
     @Override

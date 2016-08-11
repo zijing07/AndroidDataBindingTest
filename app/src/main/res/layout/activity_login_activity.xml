@@ -1,38 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="seekBarModel"
-            type="zijing.com.databindingtest.newway.SeekBarActivity.SeekBarModel" />
+        <variable name="model" type="zijing.com.databindingtest.newway.LoginActivity.LoginModel" />
+        <import type="zijing.com.databindingtest.newway.LoginActivity.Validators" />
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
 
-        <SeekBar
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:progress="@={seekBarModel.progress}"/>
+            android:text="@={model.name}"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <SeekBar
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:progress="@={seekBarModel.progress*2}"/>
+            android:inputType="textPassword"
+            android:text="@={model.password}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{model.name}"/>
 
     </LinearLayout>
 </layout>
