@@ -20,6 +20,8 @@ class ReactNativeAndroidModule extends Component {
     this.state = {
       number : 3
     }
+
+    this._addOneWithCallback = this._addOneWithCallback.bind(this)
   }
 
   render() {
@@ -48,7 +50,7 @@ class ReactNativeAndroidModule extends Component {
   }
 
   _addOneWithCallback() {
-    NativeModules.AndroidNativeModule.addOne(3, (n) => console.log(n))
+    NativeModules.AndroidNativeModule.addOne(this.state.number, (n) => console.log(this.setState({number: n})))
   }
 }
 
