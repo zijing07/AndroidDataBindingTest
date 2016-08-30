@@ -8,5 +8,9 @@
   "dependencies": {
     "react": "15.3.1",
     "react-native": "0.32.0"
+  },
+  "devDependencies": {
+    "react-native-debugger-open": "^0.3.1",
+    "remote-redux-devtools-on-debugger": "^0.6.2"
   }
 }

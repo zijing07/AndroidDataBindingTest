@@ -9,45 +9,72 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  NativeModules,
+  TouchableHighlight
 } from 'react-native';
 
 class ReactNativeAndroidModule extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      number : 3
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        {this._renderButton("Toast Test", this._showToast)}
+        {this._renderButton("Callback Test", this._addOneWithCallback)}
+        <Text>{this.state.number}</Text>
       </View>
-    );
+    )
+  }
+
+  _renderButton(text, onPress) {
+    return (
+         <TouchableHighlight
+          underlayColor='grey'
+          style={styles.button}
+          onPress={onPress}>
+          <Text style={styles.buttonText}>{text}</Text>
+        </TouchableHighlight>
+    )
+  }
+
+  _showToast() {
+    NativeModules.AndroidNativeModule.makeToast("toast test")
+  }
+
+  _addOneWithCallback() {
+    NativeModules.AndroidNativeModule.addOne(3, (n) => console.log(n))
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+  },
+  button: {
+    height: 42,
+    backgroundColor: '#999',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+    justifyContent: 'center',
     margin: 10,
+    borderRadius: 6
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16
+  }
 });
 
 AppRegistry.registerComponent('ReactNativeAndroidModule', () => ReactNativeAndroidModule);
+
+if (__DEV__) {
+	const XHR = GLOBAL.originalXMLHttpRequest ?
+		GLOBAL.originalXMLHttpRequest :
+		GLOBAL.XMLHttpRequest
+
+	XMLHttpRequest = XHR
+}
