@@ -18,7 +18,7 @@ class ReactNativeAndroidModule extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      number : 3
+      number : 0
     }
 
     this._addOneWithCallback = this._addOneWithCallback.bind(this)
@@ -27,9 +27,12 @@ class ReactNativeAndroidModule extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this._renderButton("Toast Test", this._showToast)}
-        {this._renderButton("Callback Test", this._addOneWithCallback)}
-        <Text>{this.state.number}</Text>
+        {this._renderButton('Toast Test', this._showToast)}
+        {this._renderButton('Callback Test', this._addOneWithCallback)}
+        <View style={styles.addOneText}>
+          <Text style={{fontSize: 16}}>{this.state.number}</Text>
+        </View>
+        {this._renderButton('Start Activity', this._startActivity)}
       </View>
     )
   }
@@ -52,10 +55,22 @@ class ReactNativeAndroidModule extends Component {
   _addOneWithCallback() {
     NativeModules.AndroidNativeModule.addOne(this.state.number, (n) => console.log(this.setState({number: n})))
   }
+
+  _startActivity() {
+    NativeModules.AndroidNativeModule.startActivity()
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
+  },
+  addOneText: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 42,
+    margin: 10
   },
   button: {
     height: 42,
@@ -63,7 +78,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
-    borderRadius: 6
+    borderRadius: 6,
   },
   buttonText: {
     color: 'white',
@@ -72,11 +87,3 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('ReactNativeAndroidModule', () => ReactNativeAndroidModule);
-
-if (__DEV__) {
-	const XHR = GLOBAL.originalXMLHttpRequest ?
-		GLOBAL.originalXMLHttpRequest :
-		GLOBAL.XMLHttpRequest
-
-	XMLHttpRequest = XHR
-}
